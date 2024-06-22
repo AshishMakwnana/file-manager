@@ -37,14 +37,14 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
-        return Inertia::render('Books/Show', [
+        return Inertia::render('Book/Show', [
             'book' => $book
         ]);
     }
 
     public function edit(Book $book)
     {
-        return Inertia::render('Books/Edit', [
+        return Inertia::render('Book/Edit', [
             'book' => $book
         ]);
     }
@@ -56,7 +56,6 @@ class BookController extends Controller
             'author' => 'required',
             'publication_year' => 'required|digits:4|integer|min:1900|max:' . (date('Y')),
         ]);
-
         $book->update($request->all());
 
         return redirect()->route('books.index')

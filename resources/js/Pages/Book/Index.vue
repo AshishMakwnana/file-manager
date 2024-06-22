@@ -12,7 +12,7 @@ import { Head, Link } from "@inertiajs/vue3";
                     Books
                 </h2>
                 <Link
-                    class="bg-gray-300 p-2 hover:bg-gray-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+                    class="bg-gray-300 text-gray p-2 rounded hover:bg-gray-100 active:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300"
                     :href="route('books.create')"
                     >Create New Book</Link
                 >
@@ -23,7 +23,9 @@ import { Head, Link } from "@inertiajs/vue3";
                 <table
                     class="min-w-full divide-y divide-gray-200 table-bordered"
                 >
-                    <thead class="bg-gray-100 text-red text-center align-middle">
+                    <thead
+                        class="bg-gray-100 text-red text-center align-middle"
+                    >
                         <tr>
                             <th
                                 scope="col"
@@ -41,19 +43,35 @@ import { Head, Link } from "@inertiajs/vue3";
                                 scope="col"
                                 class="px-6 py-3 text-center text-xs font-medium text-black-500 uppercase tracking-wider"
                             >
+                                Author
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-black-500 uppercase tracking-wider"
+                            >
                                 Actions
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody
+                        class="bg-white divide-y divide-gray-200 text-center"
+                    >
                         <template v-if="books.length > 0">
-                            <tr v-for="book in books" :key="book.id">
+                            <tr v-for="(book, index) in books" :key="book.id">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    {{ index + 1 }}
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ book.title }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
+                                    {{ book.author }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
                                     <a
-                                        :href="`/books/${book.id}`"
+                                        :href="
+                                            route('books.show', { id: book.id })
+                                        "
                                         class="text-indigo-600 hover:text-indigo-900"
                                         >View</a
                                     >
