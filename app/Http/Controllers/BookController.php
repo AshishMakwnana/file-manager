@@ -11,14 +11,14 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        return Inertia::render('Books/Index', [
+        return Inertia::render('Book/Index', [
             'books' => $books
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Books/Create');
+        return Inertia::render('Book/Create');
     }
 
     public function store(Request $request)
