@@ -39,7 +39,7 @@ export default {
     methods: {
         deleteBook() {
             if (confirm("Are you sure you want to delete this book?")) {
-                router.delete(route('books.delete',{id:this.book.id}));
+                router.delete(route('books.destroy',{id:this.book.id}));
             }
         },
     },
